@@ -1,3 +1,7 @@
 import type { Express } from "express";
 
-export function registerRoutes(_app: Express): void {}
+import { healthRouter } from "@/modules/health/health.route.js";
+
+export function registerRoutes(app: Express): void {
+  app.use("/health", healthRouter);
+}
