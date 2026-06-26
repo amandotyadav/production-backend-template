@@ -2,11 +2,11 @@
   "name": "production-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js",
+    "dev": "tsx watch src/server.ts",
+    "build": "npm run clean && tsc",
+    "start": "node dist/server.js",
     "typecheck": "tsc --noEmit",
     "clean": "rimraf dist"
   },
@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "packageManager": "pnpm@10.0.0",
   "devDependencies": {
     "@types/node": "^26.0.1",
     "rimraf": "^6.1.3",

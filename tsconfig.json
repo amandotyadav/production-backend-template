@@ -32,7 +32,12 @@
 
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": true
   },
 
   "include": ["src"],
