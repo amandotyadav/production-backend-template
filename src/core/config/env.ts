@@ -6,6 +6,7 @@ const envSchema = z.object({
   PORT: z.coerce.number().int().min(1).max(65535),
   APP_NAME: z.string().min(1),
   LOG_LEVEL: z.enum(["fatal", "error", "warn", "info", "debug", "trace"]),
+  CORS_ALLOWED_ORIGINS: z.string().min(1),
 });
 
 const result = envSchema.safeParse(process.env);
