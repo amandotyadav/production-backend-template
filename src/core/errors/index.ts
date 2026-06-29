@@ -1,3 +1,7 @@
 import type { Express } from "express";
 
-export function registerErrorHandler(_app: Express): void {}
+import { errorHandler } from "./error-handler.js";
+
+export function registerErrorHandler(app: Express): void {
+  app.use(errorHandler);
+}

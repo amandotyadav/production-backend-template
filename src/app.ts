@@ -7,9 +7,9 @@ import { registerRoutes } from "@/core/routes/index.js";
 export function createApp(): Express {
   const app = express();
 
-  registerErrorHandler(app);
   registerMiddleware(app);
   registerRoutes(app);
+  registerErrorHandler(app);
 
   return app;
 }

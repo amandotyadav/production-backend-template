@@ -3,10 +3,12 @@ export interface ApiSuccessResponse<T> {
   data: T;
 }
 
+export interface ApiError {
+  code: string;
+  message: string;
+}
+
 export interface ApiErrorResponse {
   success: false;
-  error: {
-    code: string;
-    message: string;
-  };
+  error: ApiError;
 }
