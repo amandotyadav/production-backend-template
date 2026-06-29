@@ -5,6 +5,8 @@ import { HttpStatus, fail } from "@/core/http/index.js";
 import { AppError } from "./app-error.js";
 import { ErrorCode } from "./error-codes.js";
 
+import { logger } from "@/core/logger/index.js";
+
 export function errorHandler(
   error: Error,
   _req: Request,
@@ -12,6 +14,8 @@ export function errorHandler(
   _next: NextFunction,
 ): void {
   if (error instanceof AppError) {
+    logger.warn({ error }, error.message);
+
     fail(res, {
       statusCode: error.statusCode,
       code: error.code,
@@ -21,7 +25,7 @@ export function errorHandler(
     return;
   }
 
-  console.error(error);
+  logger.error({ error }, "Unhandled application error");
 
   fail(res, {
     statusCode: HttpStatus.INTERNAL_SERVER_ERROR,

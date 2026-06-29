@@ -5,6 +5,7 @@ const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production", "test"]),
   PORT: z.coerce.number().int().min(1).max(65535),
   APP_NAME: z.string().min(1),
+  LOG_LEVEL: z.enum(["fatal", "error", "warn", "info", "debug", "trace"]),
 });
 
 const result = envSchema.safeParse(process.env);
