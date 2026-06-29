@@ -3,12 +3,16 @@ export interface ApiSuccessResponse<T> {
   data: T;
 }
 
-export interface ApiError {
-  code: string;
+export interface ApiErrorDetail {
+  field: string;
   message: string;
 }
 
 export interface ApiErrorResponse {
   success: false;
-  error: ApiError;
+  error: {
+    code: string;
+    message: string;
+    details?: ApiErrorDetail[];
+  };
 }

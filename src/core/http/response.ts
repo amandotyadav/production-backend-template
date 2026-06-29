@@ -1,12 +1,17 @@
 import type { Response } from "express";
 
-import type { ApiErrorResponse, ApiSuccessResponse } from "./response.types.js";
+import type {
+  ApiErrorDetail,
+  ApiErrorResponse,
+  ApiSuccessResponse,
+} from "./response.types.js";
 import { HttpStatus } from "./status-codes.js";
 
 interface FailOptions {
   statusCode: number;
   code: string;
   message: string;
+  details?: ApiErrorDetail[];
 }
 
 export function ok<T>(res: Response, data: T): void {
@@ -23,6 +28,7 @@ export function fail(res: Response, options: FailOptions): void {
     error: {
       code: options.code,
       message: options.message,
+      ...(options.details && { details: options.details }),
     },
   };
 
