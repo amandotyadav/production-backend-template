@@ -11,3 +11,5 @@ export function registerMiddleware(app: Express): void {
 
   app.use(express.json());
 }
+
+export { notFoundMiddleware } from "./not-found.js";
