@@ -13,6 +13,7 @@
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/github/actions/workflow/status/amandotyadav/production-backend-template/ci.yml?branch=main&style=for-the-badge" alt="CI">
   <img src="https://img.shields.io/github/license/amandotyadav/production-backend-template?style=for-the-badge" alt="License">
   <img src="https://img.shields.io/github/stars/amandotyadav/production-backend-template?style=for-the-badge" alt="Stars">
   <img src="https://img.shields.io/github/forks/amandotyadav/production-backend-template?style=for-the-badge" alt="Forks">
