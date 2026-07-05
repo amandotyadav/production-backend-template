@@ -25,22 +25,41 @@
   <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/Zod-Validation-3068B7?style=flat-square" alt="Zod">
   <img src="https://img.shields.io/badge/Pino-Logger-F9A825?style=flat-square" alt="Pino">
+  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/PNPM-10-F69220?style=flat-square&logo=pnpm&logoColor=white" alt="PNPM">
   <img src="https://img.shields.io/badge/License-MIT-success?style=flat-square" alt="MIT">
 </p>
 
 ---
 
-## 📖 Overview
+# 📖 Overview
 
-**Production Backend Template** is an open-source **Express.js + TypeScript backend starter** designed to eliminate repetitive project setup and provide a clean, scalable foundation for building REST APIs.
+**Production Backend Template** is an open-source Express.js + TypeScript starter designed to eliminate repetitive project setup and provide a clean, scalable foundation for building modern REST APIs.
 
-Instead of spending time configuring logging, validation, middleware, error handling, and project structure for every new project, you can start with a production-ready architecture and focus on building features.
+Instead of repeatedly configuring logging, validation, middleware, project structure, linting, formatting, Docker, and development tooling, you can start with a production-ready architecture and focus on building features.
 
-This template follows modern backend development practices while keeping the codebase simple, modular, and easy to extend.
+The template follows modern backend engineering practices while remaining simple, modular, and easy to extend.
 
 ---
 
-## ✨ Features
+# 💡 Why this Template?
+
+Every backend project begins with the same boilerplate:
+
+- Configure TypeScript
+- Setup Express
+- Configure logging
+- Validate environment variables
+- Add security middleware
+- Configure linting and formatting
+- Setup Docker
+- Organize folders
+
+This template provides those essentials out of the box so you can spend time building your application instead of rebuilding infrastructure.
+
+---
+
+# ✨ Features
 
 - ⚡ Express 5
 - 📦 TypeScript
@@ -55,6 +74,10 @@ This template follows modern backend development practices while keeping the cod
 - 🚨 Centralized Error Handling
 - 📨 Consistent API Response Helpers
 - 🎯 Path Aliases
+- 🐳 Multi-stage Docker Support
+- 📦 Docker Compose Support
+- 🔒 Non-root Production Container
+- ⚡ Optimized Docker Layer Caching
 - 🧹 ESLint
 - 💅 Prettier
 - 🪝 Husky
@@ -63,7 +86,23 @@ This template follows modern backend development practices while keeping the cod
 
 ---
 
-## 📂 Project Structure
+# ⚡ Quick Start
+
+```bash
+git clone https://github.com/amandotyadav/production-backend-template.git
+
+cd production-backend-template
+
+cp .env.example .env
+
+pnpm install
+
+pnpm dev
+```
+
+---
+
+# 📂 Project Structure
 
 ```text
 src
@@ -92,41 +131,54 @@ src
 
 ---
 
-## 🚀 Getting Started
+# 🚀 Getting Started
 
-### Clone the repository
+## Prerequisites
+
+- Node.js 24+
+- PNPM 10+
+- Docker (optional)
+- Docker Compose (optional)
+
+---
+
+## Clone the Repository
 
 ```bash
 git clone https://github.com/amandotyadav/production-backend-template.git
-```
 
-```bash
 cd production-backend-template
 ```
 
-### Install dependencies
+---
+
+## Install Dependencies
 
 ```bash
 pnpm install
 ```
 
-### Configure environment variables
+---
 
-Create a `.env` file.
+## Configure Environment Variables
 
-```env
-PORT=8080
-NODE_ENV=development
-APP_NAME=production-backend
+Copy the example environment file.
+
+```bash
+cp .env.example .env
 ```
 
-### Start the development server
+Update the values according to your environment.
+
+---
+
+## Start Development Server
 
 ```bash
 pnpm dev
 ```
 
-The server will be available at:
+The application will be available at:
 
 ```
 http://localhost:8080
@@ -134,13 +186,72 @@ http://localhost:8080
 
 ---
 
-## 📜 Available Scripts
+# 🐳 Docker
+
+## Build the Image
+
+```bash
+docker build -t production-backend .
+```
+
+---
+
+## Run the Container
+
+```bash
+docker run \
+  --env-file .env \
+  -p 8080:8080 \
+  production-backend
+```
+
+The application will be available at:
+
+```
+http://localhost:8080
+```
+
+---
+
+## Using Docker Compose
+
+Start the application
+
+```bash
+docker compose up --build
+```
+
+Run in detached mode
+
+```bash
+docker compose up -d
+```
+
+Stop the application
+
+```bash
+docker compose down
+```
+
+---
+
+## Docker Features
+
+- Multi-stage Docker build
+- Docker Compose support
+- BuildKit cache mounts
+- Production-only dependencies
+- Non-root runtime container
+
+---
+
+# 📜 Available Scripts
 
 | Command             | Description                   |
 | ------------------- | ----------------------------- |
 | `pnpm dev`          | Start development server      |
 | `pnpm build`        | Build the application         |
-| `pnpm start`        | Run the production build      |
+| `pnpm start`        | Run production build          |
 | `pnpm lint`         | Run ESLint                    |
 | `pnpm lint:fix`     | Automatically fix lint issues |
 | `pnpm format`       | Format the project            |
@@ -149,7 +260,7 @@ http://localhost:8080
 
 ---
 
-## 🏛️ Architecture
+# 🏛️ Architecture
 
 The template follows a layered architecture to keep responsibilities separated and the codebase maintainable.
 
@@ -177,22 +288,25 @@ Response
 
 ---
 
-## 🛠️ Tech Stack
+# 🛠️ Tech Stack
 
-| Technology | Purpose            |
-| ---------- | ------------------ |
-| Express 5  | Web Framework      |
-| TypeScript | Static Type Safety |
-| Zod        | Runtime Validation |
-| Pino       | Structured Logging |
-| Helmet     | Security Headers   |
-| ESLint     | Code Linting       |
-| Prettier   | Code Formatting    |
-| Husky      | Git Hooks          |
+| Technology     | Purpose            |
+| -------------- | ------------------ |
+| Express 5      | Web Framework      |
+| TypeScript     | Static Type Safety |
+| Zod            | Runtime Validation |
+| Pino           | Structured Logging |
+| Helmet         | Security Headers   |
+| Docker         | Containerization   |
+| Docker Compose | Local Development  |
+| PNPM           | Package Manager    |
+| ESLint         | Code Quality       |
+| Prettier       | Code Formatting    |
+| Husky          | Git Hooks          |
 
 ---
 
-## 🎯 Design Principles
+# 🎯 Design Principles
 
 This project is built around a few core principles:
 
@@ -206,35 +320,26 @@ This project is built around a few core principles:
 
 ---
 
-## 📌 Current Status
+# 🤝 Contributing
 
-This template currently provides the core backend infrastructure required to start a production-ready Express.js application.
+Contributions are always welcome.
 
-Additional infrastructure such as API documentation, testing, CI/CD, and observability will be added incrementally.
+Whether you'd like to fix a bug, improve documentation, or propose a new feature, your contributions are appreciated.
 
----
-
-## 🤝 Contributing
-
-Contributions, ideas, and improvements are always welcome.
-
-If you'd like to improve the project, feel free to:
-
-- Open an issue
-- Submit a pull request
-- Suggest new features
-- Report bugs
+Please read the **CONTRIBUTING.md** guide before submitting a pull request.
 
 ---
 
-## ⭐ Support
+# ⭐ Support
 
-If you find this project helpful, please consider giving it a **⭐ Star**.
+If you find this project helpful, please consider giving it a ⭐ on GitHub.
 
-It helps the project reach more developers and motivates continued development.
+It helps the project reach more developers and motivates future improvements.
 
 ---
 
-## 📄 License
+# 📄 License
 
 This project is licensed under the **MIT License**.
+
+See the **LICENSE** file for more information.
